@@ -5,16 +5,11 @@ public class TwoSAT {
     public static void main(String[] args) {
         String path = args[0];
         try {
-            // create graph from file
-            Graph g = Loader.load(path);
-            // run Tarjan's strongly connected components algorithm
+            Graph g = Loader.load(path);          
             g.tarjan();
-            // check for satisfiability
             if(g.satisfiable()) {
-                System.out.println("FORMULA SATISFIABLE");
-                // solve
-                Map<Integer, Boolean> solution = g.solve();
-                // print solution
+                System.out.println("FORMULA SATISFIABLE");            
+                Map<Integer, Boolean> solution = g.solve();             
                 for(int i = 1; i <= solution.size(); i++) {
                     Boolean value = solution.get(i);
                     if(value) {
@@ -22,7 +17,7 @@ public class TwoSAT {
                     } else {
                         System.out.print('0');
                     }
-                    // print a space to separate values
+
                     if(i != solution.size()) {
                         System.out.print(' ');
                     }
